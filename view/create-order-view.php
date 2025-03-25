@@ -2,6 +2,14 @@
 
 require_once('partial/header.php');
 
+// Vérifier si une commande existe en session
+if (array_key_exists("order", $_SESSION)) {
+        $order = $_SESSION["order"]; // Récupére la commande
+    
+        // Afficher la commande avec les valeurs.
+        echo "<p>Votre dernière commande : " . $order["quantity"] . 
+             " t-shirt(s) modèle " . $order["teeshirt"] . ".</p>";
+}
 ?>
 <main>
         <h2>Réaliser une commande</h2>
