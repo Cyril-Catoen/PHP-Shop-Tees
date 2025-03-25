@@ -5,15 +5,18 @@ require_once('partial/header.php');
 ?>
 <main>
         <h2>Réaliser une commande</h2>
-        <!-- Création du formulaire -->
+        <!-- Création du formulaire en méthode POST pour que les données soumises du formulaire puissent être récupérées dans la page. Par défaut le formulaire est en GET si rien n'est précisé.-->
 
     <form method="POST" action="">
     <div class="w80">
-                <input type="number" name="quantity" placeholder="Saisissez la quantité">
+        <!-- Créer une ligne de formulaire où il faut entrer une quantité en valeur numérique -->
+                <input type="number" name="quantity" placeholder="Saisissez la quantité"> 
         </div>
 
     <div class="w80">
+        <!-- Créer une ligne de formulaire de type select pour offrir à l'utilisateur un choix multiples entre des valeurs prédéfinies. -->
         <select name="teeshirt">
+                <!-- On insère une option en selected disabled pour qu'aucune option à valeur soit présélectionné de base et indiquer à l'utilisateur la marche à suivre -->
                 <option selected disabled>Choisissez votre modèle de t-shirt</option>
                 <option value="GetJinxed">T-shirt Get Jinxed!</option>
                 <option value="DontGetMeWrong">T-shirt Don't get me wrong !</option>
