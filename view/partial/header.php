@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="../css/style.css?v=<?= time(); ?>" />
 
         <!-- Nomme l'onglet du navigateur -->
-        <title>L'électroménager de la Piscine</title>
+        <title>T-shirt shop</title>
 </head>
 
 <body>
