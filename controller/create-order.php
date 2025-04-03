@@ -6,8 +6,7 @@ require_once('../model/product-repository.php');
 
 session_start(); // démarre la session, permet de créer un identifiant unique sauvegardé dans les cookies du navigateur de l'utilisateur
 
-$message = "";
-$messageError = ""; // on créé une variable messageError vide pour éviter les erreurs si $order est différent de false
+$message =null;
 
 // if (array_key_exists("quantity", $_POST) && // vérifie que la quantité a été saisie ET
 //     array_key_exists("teeshirt", $_POST)) { // vérifie que le modèle de t-shirt a été sélectionné
@@ -24,20 +23,38 @@ $messageError = ""; // on créé une variable messageError vide pour éviter les
  
 // }
 
+// if (array_key_exists('quantity', $_POST) && array_key_exists('teeshirt', $_POST)) {
+//         $order = createOrder();
+
+//         if ($order == false) { // Si $order retourne False alors on sauvegarde la commande dans la session, on définit une chaîne de caractères pour la variable vide $messageError et on retourne cette variable dans $orderByUser pour l'affichage sur la view.
+//             $messageError = "quantité incorrecte";
+//             $orderByUser = $messageError;
+//         }
+
+//         else { // $order existe et est conforme à ce qui est attendu, on sauvegarde la commande et utilise la fonction findOrderByUser pour récupérer le tableau contenu dans $order.
+//             saveOrder($order);
+//             $orderByUser = findOrderByUser();
+//         }
+// }
+
 if (array_key_exists('quantity', $_POST) && array_key_exists('teeshirt', $_POST)) {
-        $order = createOrder();
-
-        if ($order == false) { // Si $order retourne False alors on sauvegarde la commande dans la session, on définit une chaîne de caractères pour la variable vide $messageError et on retourne cette variable dans $orderByUser pour l'affichage sur la view.
-            $messageError = "quantité incorrecte";
-            $orderByUser = $messageError;
-        }
-
-        else { // $order existe et est conforme à ce qui est attendu, on sauvegarde la commande et utilise la fonction findOrderByUser pour récupérer le tableau contenu dans $order.
-            saveOrder($order);
-            $orderByUser = findOrderByUser();
-        }
+    try {
+        $order = createOrder($_POST['quantity'], $_POST['teeshirt']);
+        saveOrder($order);
+        $message = [
+            "type" => "success",
+            "message" => "Commande passée avec succès."
+        ];
+    } 
+    
+    catch (Exception $error) {
+        $message = [
+            "type" => "error",
+            "message" => $error->getMessage()]; // Récupère le message de l'exception, getMessage est une fonction intégrée de PHP.
+    }
 }
 
+$orderByUser = findOrderByUser();
 
 
 require_once('../view/create-order-view.php'); // récupère le contenu de la view pour afficher le HTML fixe + la partie dynamique / personnalisé par le code PHP. Il faut l'appeler après avoir déclaré la variable $message et le if pour ne pas avoir de code d'erreurs.

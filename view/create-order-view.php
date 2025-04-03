@@ -12,16 +12,14 @@ require_once('partial/header.php');
 // }
 
 // Vérifier si une commande existe en session
-if (isset($orderByUser) && $orderByUser != $messageError) {
+
+if ($orderByUser) {
 
     // Afficher la commande avec les valeurs.
-    echo "<p>Votre dernière commande : " . $order["quantity"] . 
-         " t-shirt(s) modèle " . $order["teeshirt"] . ".</p><br><p>Créée le : " . $order['created_at'] . ".</p>";
+    echo "<p>Votre dernière commande : " . $orderByUser["quantity"] . 
+         " t-shirt(s) modèle " . $orderByUser["teeshirt"] . ".</p><br><p>Créée le : " . $orderByUser['created_at'] . ".</p>";
 }
 
-else {
-    echo "<p>Votre dernière commande comporte une erreur : " . $messageError . "</p>";
-}
 
 ?>
 <main>
@@ -54,7 +52,16 @@ else {
 </form>
 
     <!-- Appel de la variable $message pour afficher le texte de succès de la commande -->
-    <h3><?php echo $message ?></h3>
+    <h3 class="<?php if($message['type'] == 'success') { 
+                        echo "green"; 
+                    } 
+                    else { 
+                        echo "red";
+                    } ?>">
+        <?php if ($message) { 
+                echo $message['message'];
+        } ?> 
+    </h3>
 
 </main>
 

@@ -90,6 +90,14 @@
        cursor : pointer;
        position : relative;
      }
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
    
 
    
