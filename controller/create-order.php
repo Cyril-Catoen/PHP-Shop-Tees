@@ -7,6 +7,7 @@ require_once('../model/product-repository.php');
 session_start(); // démarre la session, permet de créer un identifiant unique sauvegardé dans les cookies du navigateur de l'utilisateur
 
 $message = "";
+$messageError = "";
 
 // if (array_key_exists("quantity", $_POST) && // vérifie que la quantité a été saisie ET
 //     array_key_exists("teeshirt", $_POST)) { // vérifie que le modèle de t-shirt a été sélectionné
@@ -25,10 +26,17 @@ $message = "";
 
 if (array_key_exists('quantity', $_POST) && array_key_exists('teeshirt', $_POST)) {
 $order = createOrder();
-saveOrder($order);
+if ($order == false) {
+    saveOrder($order);
+    $messageError = "quantité incorrecte";
+    $orderByUser = $messageError;
+    
 }
-
+else {
+saveOrder($order);
 $orderByUser = findOrderByUser();
+}}
+
 
 
 require_once('../view/create-order-view.php'); // récupère le contenu de la view pour afficher le HTML fixe + la partie dynamique / personnalisé par le code PHP. Il faut l'appeler après avoir déclaré la variable $message et le if pour ne pas avoir de code d'erreurs.

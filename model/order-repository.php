@@ -1,11 +1,16 @@
 <?php 
 
 function createOrder() {
+        if ($_POST['quantity'] > 0 && $_POST['quantity'] <= 3) {
         $order=[
             "quantity" => $_POST['quantity'] , // récupère la valeur de la quantité dans l'input quantity une fois le formulaire soumis
             "teeshirt" => $_POST['teeshirt'] // recupère la valeur du modèle de t-shirt dans le select teeshirt une fois le formulaire soumis
             ] ; 
             return $order;
+        }
+        else {
+            return false;
+        }
     }
 
 function saveOrder($order) {

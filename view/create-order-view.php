@@ -12,12 +12,17 @@ require_once('partial/header.php');
 // }
 
 // Vérifier si une commande existe en session
-if (isset($orderByUser)) {
+if (isset($orderByUser) && $orderByUser != $messageError) {
 
     // Afficher la commande avec les valeurs.
     echo "<p>Votre dernière commande : " . $order["quantity"] . 
          " t-shirt(s) modèle " . $order["teeshirt"] . ".</p>";
 }
+
+else {
+    echo "<p>Votre dernière commande comporte une erreur : " . $messageError . "</p>";
+}
+
 ?>
 <main>
         <h2>Réaliser une commande</h2>
