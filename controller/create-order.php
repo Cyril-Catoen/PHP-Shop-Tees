@@ -23,8 +23,13 @@ $message = "";
  
 // }
 
+if (array_key_exists('quantity', $_POST) && array_key_exists('teeshirt', $_POST)) {
 $order = createOrder();
 saveOrder($order);
+}
+
+$orderByUser = findOrderByUser();
+
 
 require_once('../view/create-order-view.php'); // récupère le contenu de la view pour afficher le HTML fixe + la partie dynamique / personnalisé par le code PHP. Il faut l'appeler après avoir déclaré la variable $message et le if pour ne pas avoir de code d'erreurs.
 // Si on le require avant $message, le code étant lu de haut en bas, la lecture du code s'interrompt parce que la view appelle la variable $message mais elle n'est pas encore définie.
