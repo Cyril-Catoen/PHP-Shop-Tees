@@ -16,7 +16,7 @@ if (isset($orderByUser) && $orderByUser != $messageError) {
 
     // Afficher la commande avec les valeurs.
     echo "<p>Votre dernière commande : " . $order["quantity"] . 
-         " t-shirt(s) modèle " . $order["teeshirt"] . ".</p>";
+         " t-shirt(s) modèle " . $order["teeshirt"] . ".</p><br><p>Créée le : " . $order['created_at'] . ".</p>";
 }
 
 else {
