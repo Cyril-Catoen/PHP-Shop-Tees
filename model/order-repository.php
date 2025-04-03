@@ -17,11 +17,6 @@ function createOrder() {
 function saveOrder($order) {
     if ($order){
     $_SESSION['order'] = $order; // permet de récupérer le tableau $order avec la super globale $_SESSION. L'information reste disponible tant que les cookies ne sont pas supprimées ou qu'une nouvelle commande n'est pas réalisée. En l'état n'affiche que la dernière commande réalisée/en attente.
-    $message = "Vous avez commandé " . $order['quantity'] . " t-shirt(s) modèle " . $order['teeshirt'] . "."; //concatène un message composé de texte prédéfinis et des valeurs récupérés de quantité et du modèle de t-shirt   
-    $_SESSION['message'] = $message;
-    }
-    else {
-    $_SESSION['message'] = "Aucune commande valide n'a été effectuée.";
     }
 }
 
