@@ -7,7 +7,7 @@ require_once('../model/product-repository.php');
 session_start(); // démarre la session, permet de créer un identifiant unique sauvegardé dans les cookies du navigateur de l'utilisateur
 
 $message = "";
-$messageError = "";
+$messageError = ""; // on créé une variable messageError vide pour éviter les erreurs si $order est différent de false
 
 // if (array_key_exists("quantity", $_POST) && // vérifie que la quantité a été saisie ET
 //     array_key_exists("teeshirt", $_POST)) { // vérifie que le modèle de t-shirt a été sélectionné
@@ -25,17 +25,18 @@ $messageError = "";
 // }
 
 if (array_key_exists('quantity', $_POST) && array_key_exists('teeshirt', $_POST)) {
-$order = createOrder();
-if ($order == false) {
-    saveOrder($order);
-    $messageError = "quantité incorrecte";
-    $orderByUser = $messageError;
-    
+        $order = createOrder();
+
+        if ($order == false) { // Si $order retourne False alors on sauvegarde la commande dans la session, on définit une chaîne de caractères pour la variable vide $messageError et on retourne cette variable dans $orderByUser pour l'affichage sur la view.
+            $messageError = "quantité incorrecte";
+            $orderByUser = $messageError;
+        }
+
+        else { // $order existe et est conforme à ce qui est attendu, on sauvegarde la commande et utilise la fonction findOrderByUser pour récupérer le tableau contenu dans $order.
+            saveOrder($order);
+            $orderByUser = findOrderByUser();
+        }
 }
-else {
-saveOrder($order);
-$orderByUser = findOrderByUser();
-}}
 
 
 
