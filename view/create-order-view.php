@@ -1,6 +1,7 @@
 <?php
 
 require_once('partial/header.php');
+require_once('../model/product-repository.php');
 
 // Vérifier si une commande existe en session
 if (array_key_exists("order", $_SESSION)) {
@@ -26,9 +27,15 @@ if (array_key_exists("order", $_SESSION)) {
         <select name="teeshirt">
                 <!-- On insère une option en selected disabled pour qu'aucune option à valeur soit présélectionné de base et indiquer à l'utilisateur la marche à suivre -->
                 <option selected disabled>Choisissez votre modèle de t-shirt</option>
-                <option value="GetJinxed">T-shirt Get Jinxed!</option>
-                <option value="DontGetMeWrong">T-shirt Don't get me wrong !</option>
-                <option value="PieceOfCake">T-shirt Piece of cake</option>
+                <!-- <option value="GetJinxed">T-shirt Get Jinxed!</option> -->
+                <!-- <option value="DontGetMeWrong">T-shirt Don't get me wrong !</option> -->
+                <!-- <option value="PieceOfCake">T-shirt Piece of cake</option> -->
+
+                <!-- On réalise une boucle pour proposer tous les choix de produits -->
+                <?php foreach ($products as $product) { ?>
+                    <option value="<?php echo $product ?>">T-shirt <?php echo $product ?></option>
+               <?php } ?>
+
         </select>
     </div>
     <button type="submit">Commander</button>
