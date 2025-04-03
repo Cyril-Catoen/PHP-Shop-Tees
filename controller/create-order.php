@@ -1,4 +1,7 @@
-<?php require_once('../config.php');
+<?php 
+
+require_once('../config.php');
+require_once('../model/product-repository.php');
 
 session_start(); // démarre la session, permet de créer un identifiant unique sauvegardé dans les cookies du navigateur de l'utilisateur
 
