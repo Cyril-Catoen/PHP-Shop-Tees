@@ -1,7 +1,6 @@
 <?php
 
 require_once('partial/header.php');
-require_once('../model/product-repository.php');
 
 // Vérifier si une commande existe en session
 if (array_key_exists("order", $_SESSION)) {
