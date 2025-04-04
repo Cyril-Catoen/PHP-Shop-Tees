@@ -16,7 +16,8 @@
 <header>
     <nav>
         <ul>
-           
+           <li><a href="create-order.controller.php">Commander</a></li>
+            <li><a href="pay-order.controller.php">Payer</a></li>
         </ul>
     </nav>
 </header>
