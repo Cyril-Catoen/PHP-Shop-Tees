@@ -17,7 +17,7 @@ if ($orderByUser) {
 
     // Afficher la commande avec les valeurs.
     echo "<p>Votre dernière commande : " . $orderByUser["quantity"] . 
-         " t-shirt(s) modèle " . $orderByUser["teeshirt"] . ".</p><br><p>Créée le : " . $orderByUser['created_at'] . ".</p>";
+         " t-shirt(s) modèle " . $orderByUser["teeshirt"] . ".</p><br><p>Créée le : " . $orderByUser['created_at'] . "<br><p>Status : " . $orderByUser['status'] . ".</p>";
 }
 
 
@@ -51,17 +51,11 @@ if ($orderByUser) {
     <button type="submit">Commander</button>
 </form>
 
-    <!-- Appel de la variable $message pour afficher le texte de succès de la commande -->
-    <h3 class="<?php if($message['type'] == 'success') { 
-                        echo "green"; 
-                    } 
-                    else { 
-                        echo "red";
-                    } ?>">
-        <?php if ($message) { 
-                echo $message['message'];
-        } ?> 
-    </h3>
+    <!-- Appel de la variable $message pour afficher le texte de succès ou d'erreur de la commande. En cas de succès, le message apparaît en vert, autrement en rouge -->
+    <!-- on utilise une version simplifié de if / else pour le choix de la classe green or red dans h3 avec === et ? 'classe1' : 'classe2'. Cela revient à écrire si $message est de type success alors on echo la classe green sinon (else) on echo la classe red -->
+    <?php if ($message) { ?> 
+        <h3 class="<?php echo $message['type'] === 'success' ? 'green' : 'red'; ?>"><?php echo $message['message']; ?></h3> 
+    <?php } ?>
 
 </main>
 

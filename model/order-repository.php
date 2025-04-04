@@ -30,7 +30,8 @@ function createOrder($quantity, $teeshirt) {
     $order = [
         "quantity" => $quantity,
         "teeshirt" => $teeshirt,
-        "created_at" => $date->format('Y-m-d H:i:s')
+        "created_at" => $date->format('Y-m-d H:i:s'),
+        "status" => "CART"
     ]; 
 
     return $order;
