@@ -17,6 +17,7 @@
     <nav>
         <ul>
            <li><a href="create-order.controller.php">Commander</a></li>
+           <li><a href="see-order.controller.php">Comfirmer ou Annuler</a></li>
             <li><a href="pay-order.controller.php">Payer</a></li>
         </ul>
     </nav>
