@@ -48,7 +48,7 @@ if ($orderByUser) {
 
         </select>
     </div>
-    <button type="submit">Commander</button>
+    <button class="submit" type="">Commander</button>
 </form>
 
     <!-- Appel de la variable $message pour afficher le texte de succès ou d'erreur de la commande. En cas de succès, le message apparaît en vert, autrement en rouge -->
