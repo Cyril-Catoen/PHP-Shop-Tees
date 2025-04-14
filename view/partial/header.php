@@ -16,9 +16,10 @@
 <header>
     <nav>
         <ul>
-           <li><a href="create-order.controller.php">Commander</a></li>
-           <li><a href="see-order.controller.php">Comfirmer ou Annuler</a></li>
+            <li><a href="create-order.controller.php">Commander</a></li>
+            <li><a href="see-order.controller.php">Comfirmer ou Annuler</a></li>
             <li><a href="pay-order.controller.php">Payer</a></li>
+            <li><a href="ship-order.controller.php">Expédier</a></li>
         </ul>
     </nav>
 </header>
