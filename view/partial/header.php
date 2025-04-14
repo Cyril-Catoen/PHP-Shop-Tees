@@ -20,6 +20,7 @@
             <li><a href="see-order.controller.php">Comfirmer ou Annuler</a></li>
             <li><a href="pay-order.controller.php">Payer</a></li>
             <li><a href="ship-order.controller.php">Expédier</a></li>
+            <li><a href="delete-order.controller.php">Supprimer l'historique</a></li>
         </ul>
     </nav>
 </header>

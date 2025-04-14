@@ -14,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Si le serveur récupère des don
     if ($orderForUser['status'] == "CART") {
     $orderForUser['status'] = "CANCELLED"; // on change le statut de la commande de l'utiisateur de CART à PAID
     saveOrder($orderForUser); // on sauvegarde la commande après le changement de statut pour prendre en compte le fait que le client à payer
-    } 
+    }
     
     else {
-    $message = "Votre commande a été payée, vous ne pouvez pas l'annuler.";
+    $message = "Votre commande a été payée ou expédiée, vous ne pouvez pas l'annuler.";
     }
 }
 

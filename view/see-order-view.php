@@ -15,7 +15,7 @@ require_once('partial/header.php');
                     } ?>
         <form method="POST" action=""><button class="submit2" type="submit">Annuler</button></form>
             <?php } else {  ?>
-                        <p> Vous n'avez pas réalisé de commande.</p>
+                        <p>Vous n'avez pas réalisé de commande.</p>
             <?php  } ?>
 </main>
 

@@ -53,4 +53,14 @@ function findOrderByUser() {
     }
 }
 
+function deleteOrder() {
+    if (isset($_SESSION['order'])) {
+        unset($_SESSION['order']);
+        $_SESSION['order_deleted'] = true; // On pose un flag dans la session
+        return true;
+    } else {
+        return false;
+    }
+}
+
 ?>

@@ -13,6 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Si le serveur récupère des don
     if ($orderForUser['status'] == "CART") {
         $orderForUser['status'] = "PAID"; // on change le statut de la commande de l'utiisateur de CART à PAID
         saveOrder($orderForUser); // on sauvegarde la commande après le changement de statut pour prendre en compte le fait que le client à payer
+        $message = "Votre avez payé votre commande. Merci.";
+    }
+
+    else if ($orderForUser['status'] == "PAID" || $orderForUser['status'] == "SENT") {
+        $message = "Votre avez déjà payé ou expédié votre commande. Merci.";
     }
 
     else {
